@@ -6,6 +6,7 @@
 package sopadeletras;
 
 import Conexion.Cliente;
+import java.awt.Color;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -61,12 +62,16 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             botones[i].addActionListener(this);
         }
         inferior.add(reset = new JButton("Reset"));
+        reset.setBackground(Color.MAGENTA);
         reset.addActionListener(this);
         inferior.add(facil = new JButton("Facil"));
+        facil.setBackground(Color.GREEN);
         facil.addActionListener(this);
         inferior.add(dificil = new JButton("Dificil"));
+        dificil.setBackground(Color.RED);
         dificil.addActionListener(this);
         inferior.add(enviar = new JButton("Enviar"));
+        enviar.setBackground(Color.BLUE);
         enviar.addActionListener(this);
     }
 
@@ -75,6 +80,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         JButton btn = (JButton) e.getSource();
         String Mensaje;
         Cliente q;
+        int i = 0;
 
         if (btn == facil) {
             Mensaje = "f";
@@ -83,7 +89,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             //System.out.println("enviar");
             sopaFinal = q.recivirPaquete();
             letra = sopaFinal.toCharArray();
-            for (int i = 0; i < letra.length; i++) {
+            for (i = 0; i < letra.length; i++) {
                 botones[i].setText(letra[i] + "");
                 //System.out.println(letra[i]);
             }
@@ -112,6 +118,16 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             q.cerrarCliente();
             //System.out.println("enviar");
         }
+
+       for(i=0;i<256;i++){
+        if (btn == botones[i]) {
+            botones[i].setBackground(Color.BLUE);
+            botones[i].setEnabled(false);
+            System.out.println("LAMBORGHINI" + i);
+            //i=i+1;
+        }
+       }
+
     }
 
     public static void main(String[] args) {
