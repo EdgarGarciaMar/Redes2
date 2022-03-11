@@ -151,6 +151,28 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             q.enviarOpc(Mensaje);
             q.cerrarCliente();
             //System.out.println("enviar");
+            for (i = 0; i < letra.length; i++) {
+                botones[i].setText("");
+                botones[i].setEnabled(true);
+                //System.out.println(letra[i]);
+            }
+            contadorLamborghini = 0;
+            contadorTesla = 0;
+            contadorPorshe = 0;
+            contadorNissan = 0;
+            contadorRenault = 0;
+            contadorFord = 0;
+            contadorAudi = 0;
+            contadorVolkswagen = 0;
+            contadorPegeot = 0;
+            contadorKia = 0;
+            contadorBmw = 0;
+            contadorHonda = 0;
+            contadorHyundai = 0;
+            contadorJeep = 0;
+            contadorToyota = 0;
+            contarPalabras = 0;
+
         }
         if (btn == enviar) {
             //this.dispose();

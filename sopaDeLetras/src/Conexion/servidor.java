@@ -105,6 +105,7 @@ public class servidor {
                         break;
                     case "r":
                         System.out.println("case reset..");
+                        System.out.println("Se ha reiniciado el juego...");
                         break;
 
                 }
