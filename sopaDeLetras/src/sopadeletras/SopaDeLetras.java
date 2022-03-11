@@ -43,7 +43,21 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private int hyundai[] = {175, 174, 173, 172, 171, 170, 169};
     private int jeep[] = {231, 232, 233, 234};
     private int toyota[] = {255, 254, 253, 252, 251, 250};
-    private int contador = 0;
+    private int contadorLamborghini = 0;
+    private int contadorTesla = 0;
+    private int contadorPorshe = 0;
+    private int contadorNissan = 0;
+    private int contadorRenault = 0;
+    private int contadorFord = 0;
+    private int contadorAudi = 0;
+    private int contadorVolkswagen = 0;
+    private int contadorPegeot = 0;
+    private int contadorKia = 0;
+    private int contadorBmw = 0;
+    private int contadorHonda = 0;
+    private int contadorHyundai = 0;
+    private int contadorJeep = 0;
+    private int contadorToyota = 0;
     private int contarPalabras = 0;
 
     public SopaDeLetras() {
@@ -92,14 +106,15 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         enviar.addActionListener(this);
     }
 
-    private void buscaPalabras(int[] arr) {
-        int i;
+    private int buscaPalabras(int[] arr) {
+        int i, contador = 0;
         for (i = 0; i < arr.length; i++) {
             if (botones[arr[i]].isEnabled() == false) {
                 System.out.println("Buscapalabras-" + arr[i]);
                 contador += 1;
             }
         }
+        return contador;
     }
 
     @Override
@@ -142,21 +157,98 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             Mensaje = "e";
             q = new Cliente();
             q.enviarOpc(Mensaje);
-            q.cerrarCliente();
-            //System.out.println("enviar");
-            //System.out.println("boton-habilitado"+botones[0].isEnabled());
 
-//            for (i = 0; i < lamborghini.length; i++) {
-//                if (botones[lamborghini[i]].isEnabled() == false) {
-//                    System.out.println("Lambo-"+lamborghini[i]);
-//                    contador+=1;
-//                }
-//            }
-            buscaPalabras(lamborghini);
-            if (contador == lamborghini.length) {
+            contadorLamborghini = buscaPalabras(lamborghini);
+            if (contadorLamborghini == lamborghini.length) {
                 System.out.println("lambo esta");
+                contarPalabras += 1;
+            }
+            contadorTesla = buscaPalabras(tesla);
+            if (contadorTesla == tesla.length) {
+                System.out.println("tesla esta");
+                contarPalabras += 1;
             }
 
+            contadorPorshe = buscaPalabras(porshe);
+            if (contadorPorshe == porshe.length) {
+                System.out.println("Porshe esta");
+                contarPalabras += 1;
+            }
+
+            contadorNissan = buscaPalabras(nissan);
+            if (contadorNissan == nissan.length) {
+                System.out.println("nissan esta");
+                contarPalabras += 1;
+            }
+
+            contadorRenault = buscaPalabras(renault);
+            if (contadorRenault == renault.length) {
+                System.out.println("renault esta");
+                contarPalabras += 1;
+            }
+
+            contadorFord = buscaPalabras(ford);
+            if (contadorFord == ford.length) {
+                System.out.println("ford esta");
+                contarPalabras += 1;
+            }
+
+            contadorAudi = buscaPalabras(audi);
+            if (contadorAudi == audi.length) {
+                System.out.println("audi esta");
+                contarPalabras += 1;
+            }
+
+            contadorVolkswagen = buscaPalabras(volkswagen);
+            if (contadorVolkswagen == volkswagen.length) {
+                System.out.println("Volkswagen esta");
+                contarPalabras += 1;
+            }
+
+            contadorPegeot = buscaPalabras(pegeot);
+            if (contadorPegeot == pegeot.length) {
+                System.out.println("pegeot esta");
+                contarPalabras += 1;
+            }
+
+            contadorKia = buscaPalabras(kia);
+            if (contadorKia == kia.length) {
+                System.out.println("kia esta");
+                contarPalabras += 1;
+            }
+
+            contadorBmw = buscaPalabras(bmw);
+            if (contadorBmw == bmw.length) {
+                System.out.println("Bmw esta");
+                contarPalabras += 1;
+            }
+
+            contadorHonda = buscaPalabras(honda);
+            if (contadorHonda == honda.length) {
+                System.out.println("Honda esta");
+                contarPalabras += 1;
+            }
+
+            contadorHyundai = buscaPalabras(hyundai);
+            if (contadorHyundai == hyundai.length) {
+                System.out.println("Hyundai esta");
+                contarPalabras += 1;
+            }
+
+            contadorJeep = buscaPalabras(jeep);
+            if (contadorJeep == jeep.length) {
+                System.out.println("Jeep esta");
+                contarPalabras += 1;
+            }
+
+            contadorToyota = buscaPalabras(toyota);
+            if (contadorToyota == toyota.length) {
+                System.out.println("toyota esta");
+                contarPalabras += 1;
+            }
+
+            System.out.println("contar palabras:" + contarPalabras);
+            q.cerrarCliente();
         }
         for (i = 0; i < 256; i++) {
             if (btn == botones[i]) {
