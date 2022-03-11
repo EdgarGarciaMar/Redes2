@@ -28,6 +28,23 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private char letra[] = new char[256];
     private String sopaFinal;
     private JLabel instrucciones;
+    private int lamborghini[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    private int tesla[] = {22, 23, 24, 25, 26};
+    private int porshe[] = {37, 54, 71, 88, 105, 122, 139};
+    private int nissan[] = {58, 59, 60, 61, 62, 63};
+    private int renault[] = {55, 70, 85, 100, 115, 130, 145};
+    private int ford[] = {99, 82, 65, 48};
+    private int audi[] = {146, 131, 116, 101};
+    private int volkswagen[] = {192, 177, 162, 147, 132, 117, 102, 87, 72, 57};
+    private int pegeot[] = {208, 193, 178, 163, 148, 133};
+    private int kia[] = {152, 167, 182};
+    private int bmw[] = {198, 213, 228};
+    private int honda[] = {185, 200, 215, 230, 245};
+    private int hyundai[] = {175, 174, 173, 172, 171, 170, 169};
+    private int jeep[] = {231, 232, 233, 234};
+    private int toyota[] = {255, 254, 253, 252, 251, 250};
+    private int contador = 0;
+    private int contarPalabras = 0;
 
     public SopaDeLetras() {
         super("Sopa de Letras");
@@ -62,17 +79,27 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             botones[i].addActionListener(this);
         }
         inferior.add(reset = new JButton("Reset"));
-        reset.setBackground(Color.MAGENTA);
+        reset.setBackground(Color.magenta);
         reset.addActionListener(this);
         inferior.add(facil = new JButton("Facil"));
-        facil.setBackground(Color.GREEN);
+        facil.setBackground(Color.green);
         facil.addActionListener(this);
         inferior.add(dificil = new JButton("Dificil"));
-        dificil.setBackground(Color.RED);
+        dificil.setBackground(Color.red);
         dificil.addActionListener(this);
         inferior.add(enviar = new JButton("Enviar"));
-        enviar.setBackground(Color.BLUE);
+        enviar.setBackground(Color.blue);
         enviar.addActionListener(this);
+    }
+
+    private void buscaPalabras(int[] arr) {
+        int i;
+        for (i = 0; i < arr.length; i++) {
+            if (botones[arr[i]].isEnabled() == false) {
+                System.out.println("Buscapalabras-" + arr[i]);
+                contador += 1;
+            }
+        }
     }
 
     @Override
@@ -117,16 +144,27 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             q.enviarOpc(Mensaje);
             q.cerrarCliente();
             //System.out.println("enviar");
-        }
+            //System.out.println("boton-habilitado"+botones[0].isEnabled());
 
-       for(i=0;i<256;i++){
-        if (btn == botones[i]) {
-            botones[i].setBackground(Color.BLUE);
-            botones[i].setEnabled(false);
-            System.out.println("LAMBORGHINI" + i);
-            //i=i+1;
+//            for (i = 0; i < lamborghini.length; i++) {
+//                if (botones[lamborghini[i]].isEnabled() == false) {
+//                    System.out.println("Lambo-"+lamborghini[i]);
+//                    contador+=1;
+//                }
+//            }
+            buscaPalabras(lamborghini);
+            if (contador == lamborghini.length) {
+                System.out.println("lambo esta");
+            }
+
         }
-       }
+        for (i = 0; i < 256; i++) {
+            if (btn == botones[i]) {
+                botones[i].setBackground(Color.blue);
+                botones[i].setEnabled(false);
+                System.out.println("Boton:" + i);
+            }
+        }
 
     }
 
