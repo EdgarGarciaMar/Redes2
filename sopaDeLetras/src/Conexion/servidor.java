@@ -5,10 +5,10 @@
  */
 package Conexion;
 
-import java.io.IOException;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
+
 
 import java.net.SocketException;
 import java.util.logging.Level;
@@ -26,7 +26,7 @@ public class servidor {
     int pto = 1400;
     String host = "localhost";
     DatagramSocket MiSocket;
-    byte[] buffer = new byte[256];
+    byte[] buffer = new byte[289];
     byte[] buffer2 = new byte[1];
     String pack;
     String sopaDeLetrasAutos1 = "INIHGROBMALTÍCQI";
@@ -63,19 +63,19 @@ public class servidor {
         MiSocket.close();
     }
 
-    public void recivirPaquete() {
-
-        while (true) {
-            try {
-                DatagramPacket Paquete = new DatagramPacket(buffer, buffer.length);
-                MiSocket.receive(Paquete);
-                pack = new String(Paquete.getData());
-                System.out.println("Paquete recibido: " + pack);
-            } catch (Exception e) {
-                System.out.println("Error" + e);
-            }
-        }
-    }
+//    public void recivirPaquete() {//Funcion guia
+//
+//        while (true) {
+//            try {
+//                DatagramPacket Paquete = new DatagramPacket(buffer, buffer.length);
+//                MiSocket.receive(Paquete);
+//                pack = new String(Paquete.getData());
+//                System.out.println("Paquete recibido: " + pack);
+//            } catch (Exception e) {
+//                System.out.println("Error" + e);
+//            }
+//        }
+//    }
 
 
     public void recivirOpc() {
@@ -95,7 +95,7 @@ public class servidor {
                         System.out.println("case facil..");
                         buffer = sopaFinal.getBytes();
                         DatagramPacket Paquete2 = new DatagramPacket(buffer,
-                                sopaFinal.length(), Paquete.getAddress(), Paquete.getPort());
+                                buffer.length, Paquete.getAddress(), Paquete.getPort());
                         MiSocket.send(Paquete2);
                         System.out.println("tam env:"+sopaFinal.length());
 
@@ -115,30 +115,6 @@ public class servidor {
         }
     }
 
-//    public void iniciarJuego(String pack) {
-//        // System.out.println(pack + ",iniciar juego");
-//
-//        switch (pack) {
-//            case "e":
-//                System.out.println("case enviar..");
-//                break;
-//            case "f":
-//                System.out.println("case facil..");
-//                buffer = sopaFinal.getBytes();
-//                DatagramPacket Paquete = new DatagramPacket(buffer,
-//                        sopaFinal.length(), InetAddress.getByName(host), pto);
-//                MiSocket.send(Paquete);
-//
-//                break;
-//            case "d":
-//                System.out.println("case difil..");
-//                break;
-//            case "r":
-//                System.out.println("case reset..");
-//                break;
-//
-//        }
-//    }
     public static void main(String[] args) {
         servidor q;
         q = new servidor();

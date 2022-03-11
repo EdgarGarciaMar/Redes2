@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class Cliente {
 
     int pto = 1400;
-    byte[] buffer = new byte[256];
+    byte[] buffer = new byte[289];
     byte[] buffer2 = new byte[1];
     DatagramSocket MiSocket;
     String host = "localhost";
@@ -38,17 +38,17 @@ public class Cliente {
         MiSocket.close();
     }
 
-    public void enviarPaquete(String Mensaje) {
-        try {
-            buffer = Mensaje.getBytes();
-            DatagramPacket Paquete = new DatagramPacket(buffer,
-                    Mensaje.length(), InetAddress.getByName(host), pto);
-            MiSocket.send(Paquete);
-
-        } catch (IOException exc) {
-            System.out.println("Error" + exc);
-        }//try
-    }
+//    public void enviarPaquete(String Mensaje) {//Funcion de ejemplo
+//        try {
+//            buffer = Mensaje.getBytes();
+//            DatagramPacket Paquete = new DatagramPacket(buffer,
+//                    Mensaje.length(), InetAddress.getByName(host), pto);
+//            MiSocket.send(Paquete);
+//
+//        } catch (IOException exc) {
+//            System.out.println("Error" + exc);
+//        }//try
+//    }
 
     public void enviarOpc(String Mensaje) {
         try {
