@@ -90,6 +90,7 @@ public class servidor {
                 switch (pack) {
                     case "e":
                         System.out.println("case enviar..");
+                        System.out.println("Respuestas evaluadas...");
                         break;
                     case "f":
                         System.out.println("case facil..");

@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -80,7 +81,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         superior = new JPanel();
         superior.setLayout(null);
         instrucciones = new JLabel("Selecciona una dificultad y encuentra todas las palabras en la sopa.");
-        instrucciones.setBounds(0, 0, 600, 100);
+        instrucciones.setBounds(0, 0, 1000, 100);
         superior.add(instrucciones);
 
     }
@@ -126,6 +127,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
 
         if (btn == facil) {
             Mensaje = "f";
+            instrucciones.setText("Palabras a encontrar: TESLA,VOLKSWAGEN,TOYOTA,BMW,HYUNDAI,AUDI,HONDA,FORD,PORSCHE,LAMBORG HINI,KIA,RENAULT,PEGEOT,NISSAN,JEEP");
             q = new Cliente();
             q.enviarOpc(Mensaje);
             //System.out.println("enviar");
@@ -147,6 +149,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
 
         if (btn == reset) {
             Mensaje = "r";
+            instrucciones.setText("Selecciona una dificultad y encuentra todas las palabras en la sopa.");
             q = new Cliente();
             q.enviarOpc(Mensaje);
             q.cerrarCliente();
@@ -268,7 +271,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                 System.out.println("toyota esta");
                 contarPalabras += 1;
             }
-
+            JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: "+contarPalabras);
             System.out.println("contar palabras:" + contarPalabras);
             q.cerrarCliente();
         }
