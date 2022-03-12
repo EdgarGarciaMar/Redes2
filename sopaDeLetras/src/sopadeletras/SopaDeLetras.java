@@ -271,7 +271,13 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                 System.out.println("toyota esta");
                 contarPalabras += 1;
             }
-            JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: "+contarPalabras);
+            
+            if(contarPalabras==15){
+                JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las "+contarPalabras+" palabras");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: "+contarPalabras);
+            }
             System.out.println("contar palabras:" + contarPalabras);
             q.cerrarCliente();
         }
