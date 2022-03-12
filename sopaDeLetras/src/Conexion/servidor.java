@@ -108,6 +108,13 @@ public class servidor {
                         System.out.println("case reset..");
                         System.out.println("Se ha reiniciado el juego...");
                         break;
+                    case "m":
+                        System.out.println("case medio");
+                        
+                        break;
+                    case "a":
+                        System.out.println("EL jugador se rindio :(");
+                        break;
 
                 }
                 //iniciarJuego(pack);

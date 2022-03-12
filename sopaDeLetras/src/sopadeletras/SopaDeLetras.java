@@ -7,10 +7,13 @@ package sopadeletras;
 
 import Conexion.Cliente;
 import java.awt.Color;
+import java.awt.Desktop;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,7 +28,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
 
     private JPanel superior, inferior;
     private JButton botones[] = new JButton[256];
-    private JButton reset, facil, dificil, enviar;
+    private JButton reset, facil, dificil, enviar, medio, respuestas;
     private char letra[] = new char[256];
     private String sopaFinal;
     private JLabel instrucciones;
@@ -99,12 +102,18 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         inferior.add(facil = new JButton("Facil"));
         facil.setBackground(Color.green);
         facil.addActionListener(this);
+        inferior.add(medio = new JButton("Medio"));
+        medio.setBackground(Color.green);
+        medio.addActionListener(this);
         inferior.add(dificil = new JButton("Dificil"));
         dificil.setBackground(Color.red);
         dificil.addActionListener(this);
         inferior.add(enviar = new JButton("Enviar"));
         enviar.setBackground(Color.blue);
         enviar.addActionListener(this);
+        inferior.add(respuestas = new JButton("Respuestas"));
+        respuestas.setBackground(Color.green);
+        respuestas.addActionListener(this);
     }
 
     private int buscaPalabras(int[] arr) {
@@ -139,6 +148,14 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             }
             q.cerrarCliente();
         }
+        if (btn == medio) {
+            Mensaje = "m";
+            q = new Cliente();
+            q.enviarOpc(Mensaje);
+            q.cerrarCliente();
+            //System.out.println("enviar");
+        }
+
         if (btn == dificil) {
             Mensaje = "d";
             q = new Cliente();
@@ -271,12 +288,11 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                 System.out.println("toyota esta");
                 contarPalabras += 1;
             }
-            
-            if(contarPalabras==15){
-                JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las "+contarPalabras+" palabras");
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: "+contarPalabras);
+
+            if (contarPalabras == 15) {
+                JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
+            } else {
+                JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras);
             }
             System.out.println("contar palabras:" + contarPalabras);
             q.cerrarCliente();
@@ -286,6 +302,21 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                 botones[i].setBackground(Color.blue);
                 botones[i].setEnabled(false);
                 System.out.println("Boton:" + i);
+            }
+        }
+
+        if (btn == respuestas) {
+            Mensaje = "a";
+            q = new Cliente();
+            q.enviarOpc(Mensaje);
+            q.cerrarCliente();
+            //System.out.println("enviar");
+            JOptionPane.showMessageDialog(null, "Te has rendido :(");
+            try {
+                File path = new File("/Users/edgargarcia/Redes2/sopaDeLetras/src/pdf/facil.pdf");//poner la ruta del paquete pdf para que la abra el so
+                Desktop.getDesktop().open(path);
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         }
 
