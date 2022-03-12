@@ -341,6 +341,32 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                 System.out.println("toyota esta");
                 contarPalabras += 1;
             }
+            //Medio
+            contadorPc = buscaPalabras(pc);
+            if (contadorPc == pc.length) {
+                System.out.println("pc esta");
+                contarPalabras += 1;
+            }
+            contadorRam = buscaPalabras(ram);
+            if (contadorRam == ram.length) {
+                System.out.println("ram esta");
+                contarPalabras += 1;
+            }
+            contadorTeclado = buscaPalabras(teclado);
+            if (contadorTeclado == teclado.length) {
+                System.out.println("Teclado esta");
+                contarPalabras += 1;
+            }
+            contadorMouse = buscaPalabras(mouse);
+            if (contadorMouse == mouse.length) {
+                System.out.println("Mouse esta");
+                contarPalabras += 1;
+            }
+            contadorTecla = buscaPalabras(tecla);
+            if (contadorTecla == tecla.length) {
+                System.out.println("tecla esta");
+                contarPalabras += 1;
+            }
 
             if (contarPalabras == 15) {
                 JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
