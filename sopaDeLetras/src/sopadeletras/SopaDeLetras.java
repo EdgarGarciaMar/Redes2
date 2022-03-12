@@ -150,8 +150,15 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         }
         if (btn == medio) {
             Mensaje = "m";
+            instrucciones.setText("Palabras parciales a encontrar: WIND , R M, TECL, P P,M SE,H D,S D,J VA,TEC ,MON  OR,L  UX,PC,M C,PHY   ");
             q = new Cliente();
             q.enviarOpc(Mensaje);
+            sopaFinal = q.recivirPaquete();
+            letra = sopaFinal.toCharArray();
+            for (i = 0; i < 256; i++) {
+                botones[i].setText(letra[i] +""+i);
+                //System.out.println(letra[i]);
+            }
             q.cerrarCliente();
             //System.out.println("enviar");
         }

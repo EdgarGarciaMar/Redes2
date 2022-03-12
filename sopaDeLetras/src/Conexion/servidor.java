@@ -5,10 +5,8 @@
  */
 package Conexion;
 
-
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-
 
 import java.net.SocketException;
 import java.util.logging.Level;
@@ -17,7 +15,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Alumno
- * 
+ *
  * http://azsopadeletras.com/
  * https://mexico.as.com/mexico/2022/02/05/masdeporte/1644031759_489071.html
  */
@@ -48,6 +46,26 @@ public class servidor {
     String sopaFinal = sopaDeLetrasAutos1 + sopaDeLetrasAutos2 + sopaDeLetrasAutos3 + sopaDeLetrasAutos4 + sopaDeLetrasAutos5 + sopaDeLetrasAutos6 + sopaDeLetrasAutos7
             + sopaDeLetrasAutos8 + sopaDeLetrasAutos9 + sopaDeLetrasAutos10 + sopaDeLetrasAutos11 + sopaDeLetrasAutos12 + sopaDeLetrasAutos13 + sopaDeLetrasAutos14
             + sopaDeLetrasAutos15 + sopaDeLetrasAutos16;
+    //MEDIA
+    String sopaDeLetrasPC1 = "DHFÁIWTWINDOWSOF";
+    String sopaDeLetrasPC2 = "JYÜVÍIMYÍPÓKEUQÑ";
+    String sopaDeLetrasPC3 = "KÍIKHATZKIZGCKFW";
+    String sopaDeLetrasPC4 = "JWOVRELIÉOÉÜOVXQ";
+    String sopaDeLetrasPC5 = "ÑCZECDPMZPÁUPUMN";
+    String sopaDeLetrasPC6 = "PWPLVFHOCÁOÚCÓUÜ";
+    String sopaDeLetrasPC7 = "YHANTDPUHRÁAKJKA";
+    String sopaDeLetrasPC8 = "YVERHSISIÓMTGDHO";
+    String sopaDeLetrasPC9 = "JÍÚHHXXEAÑLQVDSV";
+    String sopaDeLetrasPC10 = "AIXPJLÁBJNÍBSHXM";
+    String sopaDeLetrasPC11 = "VCBLXTECLADOLDIC";
+    String sopaDeLetrasPC12 = "AXZÉROTINOMBLQSC";
+    String sopaDeLetrasPC13 = "ÑZUPSAEZEPYJXLÁS";
+    String sopaDeLetrasPC14 = "LÓÁNNJONPEXCCSPG";
+    String sopaDeLetrasPC15 = "AMCYIADAVÁRÑCAÜR";
+    String sopaDeLetrasPC16 = "LZJYGLNOTYHPEPME";
+    
+    String sopaFinal2=sopaDeLetrasPC1+sopaDeLetrasPC2+sopaDeLetrasPC3+sopaDeLetrasPC4+sopaDeLetrasPC5+sopaDeLetrasPC6+sopaDeLetrasPC7+sopaDeLetrasPC8+sopaDeLetrasPC9+sopaDeLetrasPC10+sopaDeLetrasPC11+
+            sopaDeLetrasPC12+sopaDeLetrasPC13+sopaDeLetrasPC14+sopaDeLetrasPC15+sopaDeLetrasPC16;        
 
     public servidor() {
         try {
@@ -76,8 +94,6 @@ public class servidor {
 //            }
 //        }
 //    }
-
-
     public void recivirOpc() {
 
         while (true) {
@@ -98,7 +114,7 @@ public class servidor {
                         DatagramPacket Paquete2 = new DatagramPacket(buffer,
                                 buffer.length, Paquete.getAddress(), Paquete.getPort());
                         MiSocket.send(Paquete2);
-                        System.out.println("tam env:"+sopaFinal.length());
+                        System.out.println("tam env:" + sopaFinal.length());
 
                         break;
                     case "d":
@@ -111,6 +127,11 @@ public class servidor {
                     case "m":
                         System.out.println("case medio");
                         
+                        buffer = sopaFinal2.getBytes();
+                        DatagramPacket Paquete3 = new DatagramPacket(buffer,
+                                buffer.length, Paquete.getAddress(), Paquete.getPort());
+                        MiSocket.send(Paquete3);
+                        System.out.println("tam env:" + sopaFinal2.length());
                         break;
                     case "a":
                         System.out.println("EL jugador se rindio :(");
