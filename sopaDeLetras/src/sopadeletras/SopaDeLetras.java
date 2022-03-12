@@ -62,7 +62,38 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private int contadorHyundai = 0;
     private int contadorJeep = 0;
     private int contadorToyota = 0;
+    //Contador de palabras
     private int contarPalabras = 0;
+    //MEDIA
+    private int pc[] = {253, 236};
+    private int ram[] = {52, 37, 22};
+    private int teclado[] = {165, 166, 167, 168, 169, 170, 171};
+    private int mouse[] = {71, 87, 103, 119, 135};
+    private int tecla[] = {38, 53, 68, 83, 98};
+    private int ssd[] = {207, 190, 173};
+    private int hdd[] = {157, 141, 125};
+    private int monitor[] = {186, 185, 184, 183, 182, 181, 180};
+    private int windows[] = {7, 8, 9, 10, 11, 12, 13};
+    private int mac[] = {254, 237, 220};
+    private int linux[] = {245, 228, 211, 194, 177};
+    private int java[] = {128, 144, 160, 176};
+    private int phyton[] = {251, 250, 249, 248, 247, 246};
+    private int php[] = {70, 86, 102};
+
+    private int contadorPc = 0;
+    private int contadorRam = 0;
+    private int contadorTeclado = 0;
+    private int contadorMouse = 0;
+    private int contadorTecla = 0;
+    private int contadorSsd = 0;
+    private int contadorHdd = 0;
+    private int contadorMonitor = 0;
+    private int contadorWindows = 0;
+    private int contadorMac = 0;
+    private int contadorLinux = 0;
+    private int contadorJava = 0;
+    private int contadorPhyton = 0;
+    private int contadorPhp = 0;
 
     public SopaDeLetras() {
         super("Sopa de Letras");
@@ -156,7 +187,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             sopaFinal = q.recivirPaquete();
             letra = sopaFinal.toCharArray();
             for (i = 0; i < 256; i++) {
-                botones[i].setText(letra[i] +""+i);
+                botones[i].setText(letra[i] + "" + i);
                 //System.out.println(letra[i]);
             }
             q.cerrarCliente();
@@ -198,8 +229,23 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             contadorHyundai = 0;
             contadorJeep = 0;
             contadorToyota = 0;
+
             contarPalabras = 0;
 
+            contadorPc = 0;
+            contadorRam = 0;
+            contadorTeclado = 0;
+            contadorMouse = 0;
+            contadorTecla = 0;
+            contadorSsd = 0;
+            contadorHdd = 0;
+            contadorMonitor = 0;
+            contadorWindows = 0;
+            contadorMac = 0;
+            contadorLinux = 0;
+            contadorJava = 0;
+            contadorPhyton = 0;
+            contadorPhp = 0;
         }
         if (btn == enviar) {
             //this.dispose();
