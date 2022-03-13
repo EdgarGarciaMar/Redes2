@@ -64,6 +64,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private int contadorToyota = 0;
     //Contador de palabras
     private int contarPalabras = 0;
+    private int verificador = 0;
     //MEDIA
     private int pc[] = {253, 236};
     private int ram[] = {52, 37, 22};
@@ -167,6 +168,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
 
         if (btn == facil) {
             Mensaje = "f";
+            verificador = 1;
             instrucciones.setText("Palabras a encontrar: TESLA,VOLKSWAGEN,TOYOTA,BMW,HYUNDAI,AUDI,HONDA,FORD,PORSCHE,LAMBORG HINI,KIA,RENAULT,PEGEOT,NISSAN,JEEP");
             q = new Cliente();
             q.enviarOpc(Mensaje);
@@ -181,13 +183,14 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         }
         if (btn == medio) {
             Mensaje = "m";
+            verificador = 2;
             instrucciones.setText("Palabras parciales a encontrar: WIND , R M, TECL, P P,M SE,H D,S D,J VA,TEC ,MON  OR,L  UX,PC,M C,PHY   ");
             q = new Cliente();
             q.enviarOpc(Mensaje);
             sopaFinal = q.recivirPaquete();
             letra = sopaFinal.toCharArray();
             for (i = 0; i < 256; i++) {
-                botones[i].setText(letra[i] + "" + i);
+                botones[i].setText(letra[i] + "");
                 //System.out.println(letra[i]);
             }
             q.cerrarCliente();
@@ -367,8 +370,61 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                 System.out.println("tecla esta");
                 contarPalabras += 1;
             }
+            contadorSsd = buscaPalabras(ssd);
+            if (contadorSsd == ssd.length) {
+                System.out.println("SSD esta");
+                contarPalabras += 1;
+            }
+            contadorHdd = buscaPalabras(hdd);
+            if (contadorHdd == hdd.length) {
+                System.out.println("HDD esta");
+                contarPalabras += 1;
+            }
+            contadorMonitor = buscaPalabras(monitor);
+            if (contadorMonitor == monitor.length) {
+                System.out.println("Monitor esta");
+                contarPalabras += 1;
+            }
+            contadorWindows = buscaPalabras(windows);
+            if (contadorWindows == windows.length) {
+                System.out.println("Windows esta");
+                contarPalabras += 1;
+            }
+            contadorMac = buscaPalabras(mac);
+            if (contadorMac == mac.length) {
+                System.out.println("Mac esta");
+                contarPalabras += 1;
+            }
+            contadorLinux = buscaPalabras(linux);
+            if (contadorLinux == linux.length) {
+                System.out.println("Linux esta");
+                contarPalabras += 1;
+            }
+            contadorJava = buscaPalabras(java);
+            if (contadorJava == java.length) {
+                System.out.println("Java esta");
+                contarPalabras += 1;
+            }
+            contadorPhyton = buscaPalabras(phyton);
+            if (contadorPhyton == phyton.length) {
+                System.out.println("phyton esta");
+                contarPalabras += 1;
+            }
+            contadorPhp = buscaPalabras(php);
+            if (contadorPhp == php.length) {
+                System.out.println("Php esta");
+                contarPalabras += 1;
+            }
+            
+            if (verificador == 1) {
+                if (contarPalabras == 15 && verificador == 1) {
+                    JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras);
+                }
+            }
 
-            if (contarPalabras == 15) {
+            if (contarPalabras == 14 && verificador == 2) {
                 JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
             } else {
                 JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras);
