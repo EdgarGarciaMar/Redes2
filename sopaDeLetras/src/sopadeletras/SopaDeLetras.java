@@ -427,7 +427,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             if (contarPalabras == 14 && verificador == 2) {
                 JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
             } else {
-                JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras);
+                JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras+" Algunas palabras que te pueden faltar son: php, mac, linux, ram");
             }
             System.out.println("contar palabras:" + contarPalabras);
             q.cerrarCliente();
