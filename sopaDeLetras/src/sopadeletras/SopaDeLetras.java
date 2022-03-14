@@ -148,7 +148,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private void ventanaInferior() {
         inferior = new JPanel();
         inferior.setLayout(new GridLayout(17, 17, 3, 3));
-        inferior.setBackground(Color.WHITE);
+        inferior.setBackground(new java.awt.Color(15,129,237));
         for (int i = 0; i < 256; i++) {
             inferior.add(botones[i] = new JButton(""));
             botones[i].addActionListener(this);
