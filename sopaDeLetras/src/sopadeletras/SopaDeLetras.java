@@ -138,6 +138,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private void ventanaSuperior() {
         superior = new JPanel();
         superior.setLayout(null);
+        superior.setBackground(Color.BLUE);
         instrucciones = new JLabel("Selecciona una dificultad y encuentra todas las palabras en la sopa.");
         instrucciones.setBounds(0, 0, 1000, 100);
         superior.add(instrucciones);
@@ -147,27 +148,28 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private void ventanaInferior() {
         inferior = new JPanel();
         inferior.setLayout(new GridLayout(17, 17, 3, 3));
+        inferior.setBackground(Color.WHITE);
         for (int i = 0; i < 256; i++) {
             inferior.add(botones[i] = new JButton(""));
             botones[i].addActionListener(this);
         }
         inferior.add(reset = new JButton("Reset"));
-        reset.setBackground(Color.magenta);
+        reset.setBackground(Color.BLUE);
         reset.addActionListener(this);
         inferior.add(facil = new JButton("Facil"));
-        facil.setBackground(Color.green);
+        facil.setBackground(Color.GREEN);
         facil.addActionListener(this);
         inferior.add(medio = new JButton("Medio"));
-        medio.setBackground(Color.green);
+        medio.setBackground(Color.yellow);
         medio.addActionListener(this);
         inferior.add(dificil = new JButton("Dificil"));
-        dificil.setBackground(Color.red);
+        dificil.setBackground(Color.RED);
         dificil.addActionListener(this);
         inferior.add(enviar = new JButton("Enviar"));
-        enviar.setBackground(Color.blue);
+        enviar.setBackground(Color.GRAY);
         enviar.addActionListener(this);
         inferior.add(respuestas = new JButton("Respuestas"));
-        respuestas.setBackground(Color.green);
+        respuestas.setBackground(Color.ORANGE);
         respuestas.addActionListener(this);
     }
 
@@ -192,6 +194,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         if (btn == facil) {
             Mensaje = "f";
             verificador = 1;
+            superior.setBackground(Color.GREEN);
             instrucciones.setText("Palabras a encontrar: TESLA,VOLKSWAGEN,TOYOTA,BMW,HYUNDAI,AUDI,HONDA,FORD,PORSCHE,LAMBORG HINI,KIA,RENAULT,PEGEOT,NISSAN,JEEP");
             q = new Cliente();
             q.enviarOpc(Mensaje);
@@ -207,6 +210,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         if (btn == medio) {
             Mensaje = "m";
             verificador = 2;
+            superior.setBackground(Color.YELLOW);
             instrucciones.setText("Palabras parciales a encontrar: WIND , R M, TECL, P P,M SE,H D,S D,J VA,TEC ,MON  OR,L  UX,PC,M C,PHY   ");
             q = new Cliente();
             q.enviarOpc(Mensaje);
@@ -223,13 +227,14 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         if (btn == dificil) {
             Mensaje = "d";
             verificador = 3;
+            superior.setBackground(Color.RED);
             instrucciones.setText("Longitud de las palabras a encontrar: 5c,5c,6c,6c,7c,7c,12c,12c,8c,8c, son anagramas");
             q = new Cliente();
             q.enviarOpc(Mensaje);
             sopaFinal = q.recivirPaquete();
             letra = sopaFinal.toCharArray();
             for (i = 0; i < 256; i++) {
-                botones[i].setText(letra[i] + "" + i);
+                botones[i].setText(letra[i] + "");
                 //System.out.println(letra[i]);
             }
             q.cerrarCliente();
@@ -239,6 +244,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         if (btn == reset) {
             Mensaje = "r";
             instrucciones.setText("Selecciona una dificultad y encuentra todas las palabras en la sopa.");
+            superior.setBackground(Color.BLUE);
             q = new Cliente();
             q.enviarOpc(Mensaje);
             q.cerrarCliente();
@@ -295,6 +301,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
         if (btn == enviar) {
             //this.dispose();
             Mensaje = "e";
+            superior.setBackground(Color.GRAY);
             q = new Cliente();
             q.enviarOpc(Mensaje);
 
@@ -526,13 +533,13 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras + " Algunas palabras que te pueden faltar son: php, mac, linux, ram");
                 }
             }
-
+            if (verificador == 3) {
             if (contarPalabras == 10 && verificador == 3) {
                 JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
             } else {
                 JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras + " Algunas palabras que te pueden faltar son Anagramas: Silvar, Croacia, Alicate");
             }
-
+            }
             System.out.println("contar palabras:" + contarPalabras);
             q.cerrarCliente();
         }
@@ -546,6 +553,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
 
         if (btn == respuestas) {
             Mensaje = "a";
+            superior.setBackground(Color.ORANGE);
             q = new Cliente();
             q.enviarOpc(Mensaje);
             q.cerrarCliente();
