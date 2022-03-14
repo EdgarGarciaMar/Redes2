@@ -175,7 +175,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             //System.out.println("enviar");
             sopaFinal = q.recivirPaquete();
             letra = sopaFinal.toCharArray();
-            for (i = 0; i < letra.length; i++) {
+            for (i = 0; i < 256; i++) {
                 botones[i].setText(letra[i] + "");
                 //System.out.println(letra[i]);
             }
@@ -199,8 +199,16 @@ public class SopaDeLetras extends JFrame implements ActionListener {
 
         if (btn == dificil) {
             Mensaje = "d";
+            verificador = 3;
+            instrucciones.setText("Longitud de las palabras a encontrar: 5c,5c,6c,6c,7c,7c,12c,12c,8c,8c, son anagramas");
             q = new Cliente();
             q.enviarOpc(Mensaje);
+            sopaFinal = q.recivirPaquete();
+            letra = sopaFinal.toCharArray();
+            for (i = 0; i < 256; i++) {
+                botones[i].setText(letra[i] + "");
+                //System.out.println(letra[i]);
+            }
             q.cerrarCliente();
             //System.out.println("enviar");
         }
@@ -212,7 +220,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             q.enviarOpc(Mensaje);
             q.cerrarCliente();
             //System.out.println("enviar");
-            for (i = 0; i < letra.length; i++) {
+            for (i = 0; i < 256; i++) {
                 botones[i].setText("");
                 botones[i].setEnabled(true);
                 //System.out.println(letra[i]);

@@ -24,7 +24,7 @@ public class servidor {
     int pto = 1400;
     String host = "localhost";
     DatagramSocket MiSocket;
-    byte[] buffer = new byte[289];
+    byte[] buffer = new byte[400];
     byte[] buffer2 = new byte[1];
     String pack;
     String sopaDeLetrasAutos1 = "INIHGROBMALTÍCQI";
@@ -65,7 +65,28 @@ public class servidor {
     String sopaDeLetrasPC16 = "LZJYGLNOTYHPEPME";
     
     String sopaFinal2=sopaDeLetrasPC1+sopaDeLetrasPC2+sopaDeLetrasPC3+sopaDeLetrasPC4+sopaDeLetrasPC5+sopaDeLetrasPC6+sopaDeLetrasPC7+sopaDeLetrasPC8+sopaDeLetrasPC9+sopaDeLetrasPC10+sopaDeLetrasPC11+
-            sopaDeLetrasPC12+sopaDeLetrasPC13+sopaDeLetrasPC14+sopaDeLetrasPC15+sopaDeLetrasPC16;        
+            sopaDeLetrasPC12+sopaDeLetrasPC13+sopaDeLetrasPC14+sopaDeLetrasPC15+sopaDeLetrasPC16;   
+    
+    //DIFICIL
+    String sopaDeLetrasAnagrama1= "EASYBKÍDÑIDDZVCE";
+    String sopaDeLetrasAnagrama2= "ÑSILBARCÉDÁYÉXMT";
+    String sopaDeLetrasAnagrama3= "WADSÜIJVJDPHRLMN";
+    String sopaDeLetrasAnagrama4= "NIQTVÚHÑVORÚÓÓÑA";
+    String sopaDeLetrasAnagrama5= "MTLAGZÜCÉEDJLWRC";
+    String sopaDeLetrasAnagrama6= "EKPPFCTKÓZÍXÍAUI";
+    String sopaDeLetrasAnagrama7= "TVÓACALIENTATZÉL";
+    String sopaDeLetrasAnagrama8= "AUIRBIRÜQÑGAJPJA";
+    String sopaDeLetrasAnagrama9= "CXZCRCQLFTMRAÓPH";
+    String sopaDeLetrasAnagrama10= "ANBAAAÍJAOÚTRMBA";
+    String sopaDeLetrasAnagrama11= "RÍIMSOFWJTFCCÓAT";
+    String sopaDeLetrasAnagrama12= "PÑKIIRNÜFÚÜYAWIR";
+    String sopaDeLetrasAnagrama13= "IDKELCYMÜEPÓIUÑA";
+    String sopaDeLetrasAnagrama14= "ALÓNQDWEOVNRCDÓM";
+    String sopaDeLetrasAnagrama15= "NIGTISMMNWZSOYSB";
+    String sopaDeLetrasAnagrama16= "OLIOFVPNÓÑKÍBZKD";
+    
+    String sopaFinal3=sopaDeLetrasAnagrama1+sopaDeLetrasAnagrama2+sopaDeLetrasAnagrama3+sopaDeLetrasAnagrama4+sopaDeLetrasAnagrama5+sopaDeLetrasAnagrama6+sopaDeLetrasAnagrama7+sopaDeLetrasAnagrama8+
+            sopaDeLetrasAnagrama9+sopaDeLetrasAnagrama10+sopaDeLetrasAnagrama11+sopaDeLetrasAnagrama12+sopaDeLetrasAnagrama13+sopaDeLetrasAnagrama14+sopaDeLetrasAnagrama15+sopaDeLetrasAnagrama16;
 
     public servidor() {
         try {
@@ -119,6 +140,11 @@ public class servidor {
                         break;
                     case "d":
                         System.out.println("case difil..");
+                        buffer = sopaFinal3.getBytes();
+                        DatagramPacket Paquete4 = new DatagramPacket(buffer,
+                                buffer.length, Paquete.getAddress(), Paquete.getPort());
+                        MiSocket.send(Paquete4);
+                        System.out.println("tam env:" + sopaFinal3.length());
                         break;
                     case "r":
                         System.out.println("case reset..");

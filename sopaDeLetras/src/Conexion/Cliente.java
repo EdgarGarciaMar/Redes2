@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class Cliente {
 
     int pto = 1400;
-    byte[] buffer = new byte[289];
+    byte[] buffer = new byte[400];
     byte[] buffer2 = new byte[1];
     DatagramSocket MiSocket;
     String host = "localhost";
