@@ -77,7 +77,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private int windows[] = {7, 8, 9, 10, 11, 12, 13};
     private int mac[] = {254, 237, 220};
     private int linux[] = {245, 228, 211, 194, 177};
-    private int java[] = {128, 144, 160, 176};
+    private int java[] = {128, 144, 160, 176};//java esta en caso dificl
     private int phyton[] = {251, 250, 249, 248, 247, 246};
     private int php[] = {70, 86, 102};
 
@@ -97,16 +97,16 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private int contadorPhp = 0;
 
     //Dificil
-    private int anagrama1[] = {17,18,19,20,21,22};//silvar
-    private int anagrama2[] = {64,80,96,112,128,144,160,176,192,208,224,240};//metacarpiano
-    private int anagrama3[] = {67,83,99,115,131,147,163,179,195,211,227,243};//aparcamiento
-    private int anagrama4[] = {116,132,148,164,180,196};//brasil
-    private int anagrama5[] = {100,101,102,103,104,105,106,107};//calienta
-    private int anagrama6[] = {};
-    private int anagrama7[] = {};
-    private int anagrama8[] = {};
-    private int anagrama9[] = {};
-    private int anagrama10[] = {};
+    private int anagrama1[] = {17, 18, 19, 20, 21, 22};//silvar
+    private int anagrama2[] = {64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240};//metacarpiano
+    private int anagrama3[] = {67, 83, 99, 115, 131, 147, 163, 179, 195, 211, 227, 243};//aparcamiento
+    private int anagrama4[] = {116, 132, 148, 164, 180, 196};//brasil
+    private int anagrama5[] = {100, 101, 102, 103, 104, 105, 106, 107};//calienta
+    private int anagrama6[] = {197, 181, 165, 149, 133, 117, 101};//coracia
+    private int anagrama7[] = {138, 123, 108, 93, 78};//matar
+    private int anagrama8[] = {127, 111, 95, 79, 63, 47, 31, 15};//alicante
+    private int anagrama9[] = {140, 156, 172, 188, 204, 220, 236};//arcaico
+    private int anagrama10[] = {223, 207, 191, 175, 159};//marta
 
     private int contadorAnagrama1 = 0;
     private int contadorAnagrama2 = 0;
@@ -229,7 +229,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             sopaFinal = q.recivirPaquete();
             letra = sopaFinal.toCharArray();
             for (i = 0; i < 256; i++) {
-                botones[i].setText(letra[i] + ""+i);
+                botones[i].setText(letra[i] + "" + i);
                 //System.out.println(letra[i]);
             }
             q.cerrarCliente();
@@ -442,10 +442,12 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                 System.out.println("Linux esta");
                 contarPalabras += 1;
             }
-            contadorJava = buscaPalabras(java);
-            if (contadorJava == java.length) {
-                System.out.println("Java esta");
-                contarPalabras += 1;
+            if (verificador == 2) {
+                contadorJava = buscaPalabras(java);
+                if (contadorJava == java.length) {
+                    System.out.println("Java esta");
+                    contarPalabras += 1;
+                }
             }
             contadorPhyton = buscaPalabras(phyton);
             if (contadorPhyton == phyton.length) {
@@ -457,6 +459,57 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                 System.out.println("Php esta");
                 contarPalabras += 1;
             }
+            //Dificil
+            contadorAnagrama1 = buscaPalabras(anagrama1);
+            if (contadorAnagrama1 == anagrama1.length) {
+                System.out.println("Anagrama1 esta");
+                contarPalabras += 1;
+            }
+            contadorAnagrama2 = buscaPalabras(anagrama2);
+            if (contadorAnagrama2 == anagrama2.length) {
+                System.out.println("Anagrama2 esta");
+                contarPalabras += 1;
+            }
+            contadorAnagrama3 = buscaPalabras(anagrama3);
+            if (contadorAnagrama3 == anagrama3.length) {
+                System.out.println("Anagrama3 esta");
+                contarPalabras += 1;
+            }
+            contadorAnagrama4 = buscaPalabras(anagrama4);
+            if (contadorAnagrama4 == anagrama4.length) {
+                System.out.println("Anagrama4 esta");
+                contarPalabras += 1;
+            }
+            contadorAnagrama5 = buscaPalabras(anagrama5);
+            if (contadorAnagrama5 == anagrama5.length) {
+                System.out.println("Anagrama5 esta");
+                contarPalabras += 1;
+            }
+            contadorAnagrama6 = buscaPalabras(anagrama6);
+            if (contadorAnagrama6 == anagrama6.length) {
+                System.out.println("Anagrama6 esta");
+                contarPalabras += 1;
+            }
+            contadorAnagrama7 = buscaPalabras(anagrama7);
+            if (contadorAnagrama7 == anagrama7.length) {
+                System.out.println("Anagrama7 esta");
+                contarPalabras += 1;
+            }
+            contadorAnagrama8 = buscaPalabras(anagrama8);
+            if (contadorAnagrama8 == anagrama8.length) {
+                System.out.println("Anagrama8 esta");
+                contarPalabras += 1;
+            }
+            contadorAnagrama9 = buscaPalabras(anagrama9);
+            if (contadorAnagrama9 == anagrama9.length) {
+                System.out.println("Anagrama9 esta");
+                contarPalabras += 1;
+            }
+            contadorAnagrama10 = buscaPalabras(anagrama10);
+            if (contadorAnagrama10 == anagrama10.length) {
+                System.out.println("Anagrama10 esta");
+                contarPalabras += 1;
+            }
 
             if (verificador == 1) {
                 if (contarPalabras == 15) {
@@ -465,7 +518,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras);
                 }
             }
-            
+
             if (verificador == 2) {
                 if (contarPalabras == 14) {
                     JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
@@ -473,7 +526,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras + " Algunas palabras que te pueden faltar son: php, mac, linux, ram");
                 }
             }
-            
+
             if (contarPalabras == 10 && verificador == 3) {
                 JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
             } else {
