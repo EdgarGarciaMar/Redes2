@@ -96,6 +96,29 @@ public class SopaDeLetras extends JFrame implements ActionListener {
     private int contadorPhyton = 0;
     private int contadorPhp = 0;
 
+    //Dificil
+    private int anagrama1[] = {17,18,19,20,21,22};//silvar
+    private int anagrama2[] = {64,80,96,112,128,144,160,176,192,208,224,240};//metacarpiano
+    private int anagrama3[] = {67,83,99,115,131,147,163,179,195,211,227,243};//aparcamiento
+    private int anagrama4[] = {116,132,148,164,180,196};//brasil
+    private int anagrama5[] = {100,101,102,103,104,105,106,107};//calienta
+    private int anagrama6[] = {};
+    private int anagrama7[] = {};
+    private int anagrama8[] = {};
+    private int anagrama9[] = {};
+    private int anagrama10[] = {};
+
+    private int contadorAnagrama1 = 0;
+    private int contadorAnagrama2 = 0;
+    private int contadorAnagrama3 = 0;
+    private int contadorAnagrama4 = 0;
+    private int contadorAnagrama5 = 0;
+    private int contadorAnagrama6 = 0;
+    private int contadorAnagrama7 = 0;
+    private int contadorAnagrama8 = 0;
+    private int contadorAnagrama9 = 0;
+    private int contadorAnagrama10 = 0;
+
     public SopaDeLetras() {
         super("Sopa de Letras");
         ventanaSuperior();
@@ -206,7 +229,7 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             sopaFinal = q.recivirPaquete();
             letra = sopaFinal.toCharArray();
             for (i = 0; i < 256; i++) {
-                botones[i].setText(letra[i] + "");
+                botones[i].setText(letra[i] + ""+i);
                 //System.out.println(letra[i]);
             }
             q.cerrarCliente();
@@ -257,6 +280,17 @@ public class SopaDeLetras extends JFrame implements ActionListener {
             contadorJava = 0;
             contadorPhyton = 0;
             contadorPhp = 0;
+
+            contadorAnagrama1 = 0;
+            contadorAnagrama2 = 0;
+            contadorAnagrama3 = 0;
+            contadorAnagrama4 = 0;
+            contadorAnagrama5 = 0;
+            contadorAnagrama6 = 0;
+            contadorAnagrama7 = 0;
+            contadorAnagrama8 = 0;
+            contadorAnagrama9 = 0;
+            contadorAnagrama10 = 0;
         }
         if (btn == enviar) {
             //this.dispose();
@@ -423,20 +457,29 @@ public class SopaDeLetras extends JFrame implements ActionListener {
                 System.out.println("Php esta");
                 contarPalabras += 1;
             }
-            
+
             if (verificador == 1) {
-                if (contarPalabras == 15 && verificador == 1) {
+                if (contarPalabras == 15) {
                     JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
                 } else {
                     JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras);
                 }
             }
-
-            if (contarPalabras == 14 && verificador == 2) {
+            
+            if (verificador == 2) {
+                if (contarPalabras == 14) {
+                    JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras + " Algunas palabras que te pueden faltar son: php, mac, linux, ram");
+                }
+            }
+            
+            if (contarPalabras == 10 && verificador == 3) {
                 JOptionPane.showMessageDialog(null, "Felicidades encontraste todas las " + contarPalabras + " palabras");
             } else {
-                JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras+" Algunas palabras que te pueden faltar son: php, mac, linux, ram");
+                JOptionPane.showMessageDialog(null, "Palabras encontradas en la sopa: " + contarPalabras + " Algunas palabras que te pueden faltar son Anagramas: Silvar, Croacia, Alicate");
             }
+
             System.out.println("contar palabras:" + contarPalabras);
             q.cerrarCliente();
         }
