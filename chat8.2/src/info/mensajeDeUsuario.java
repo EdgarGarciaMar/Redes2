@@ -1,0 +1,51 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package info;
+
+import java.io.Serializable;
+
+/**
+ *
+ * @author edgargarcia
+ */
+public class mensajeDeUsuario implements Serializable {
+
+    private String mensaje;
+    private String usuarioOrigen;
+    private String usuarioDestino;
+
+    public mensajeDeUsuario (String mensaje, String usuarioOrigen, String usuarioDestino) {
+        this.mensaje = mensaje;
+        this.usuarioOrigen = usuarioOrigen;
+        this.usuarioDestino = usuarioDestino;
+
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public String getUsuarioOrigen() {
+        return usuarioOrigen;
+    }
+
+    public String getUsuarioDestino() {
+        return usuarioDestino;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public void setUsuarioOrigen(String usuarioOrigen) {
+        this.usuarioOrigen = usuarioOrigen;
+    }
+
+    public void setUsuarioDestino(String usuarioDestino) {
+        this.usuarioDestino = usuarioDestino;
+    }
+
+}
