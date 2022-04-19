@@ -32,7 +32,7 @@ import javax.swing.JTextPane;
  */
 public class Chat82 extends JFrame implements ActionListener {
 
-    private JButton enviar, emoji1, emoji2, emoji3;
+    private JButton enviar, emoji1, emoji2, emoji3, emoji4, emoji5, emoji6, emoji7, emoji8, emoji9, emoji10;
     private JTextField entrada;
     private JTextPane editor;
     private String nombreGuardado;
@@ -73,6 +73,36 @@ public class Chat82 extends JFrame implements ActionListener {
         emoji3.setBounds(105, 670, 80, 40);
         emoji3.addActionListener(this);
         this.add(emoji3);
+        emoji4 = new JButton("ó_ò");
+        emoji4.setBounds(190, 670, 50, 40);
+        emoji4.addActionListener(this);
+        this.add(emoji4);
+        emoji5 = new JButton("(ノಠ益ಠ)");
+        emoji5.setBounds(240, 670, 80, 40);
+        emoji5.addActionListener(this);
+        this.add(emoji5);
+        emoji6 = new JButton("(▀̿̿Ĺ̯̿▀̿ ̿)");
+        emoji6.setBounds(320, 670, 80, 40);
+        emoji6.addActionListener(this);
+        this.add(emoji6);
+        emoji7 = new JButton("(ಥ﹏ಥ)");
+        emoji7.setBounds(400, 670, 80, 40);
+        emoji7.addActionListener(this);
+        this.add(emoji7);
+        
+        emoji8 = new JButton("٩(♡ε♡ )۶");
+        emoji8.setBounds(480, 670, 80, 40);
+        emoji8.addActionListener(this);
+        this.add(emoji8);
+        emoji9 = new JButton("[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]");
+        emoji9.setBounds(560, 670, 80, 40);
+        emoji9.addActionListener(this);
+        this.add(emoji9);
+        emoji10 = new JButton(" (◉ω◉)");
+        emoji10.setBounds(640, 670, 80, 40);
+        emoji10.addActionListener(this);
+        this.add(emoji10);
+        
         escuchar hiloEscucha = new escuchar();
         hiloEscucha.start();
 
@@ -117,6 +147,42 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji3) {
             String emojiLenny = "༼  ͡° ͜ʖ ͡° ༽";
             hiloEnvia = new enviar(emojiLenny, nombreGuardado, "Todos");
+            hiloEnvia.start();
+        }
+        if (btn == emoji4) {
+            String emoji4 = "ó_ò";
+            hiloEnvia = new enviar(emoji4, nombreGuardado, "Todos");
+            hiloEnvia.start();
+        }
+        if (btn == emoji5) {
+            String emoji5 = "(ノಠ益ಠ)";
+            hiloEnvia = new enviar(emoji5, nombreGuardado, "Todos");
+            hiloEnvia.start();
+        }
+
+        if (btn == emoji6) {
+            String emoji6 = " (▀̿̿Ĺ̯̿▀̿ ̿)";
+            hiloEnvia = new enviar(emoji6, nombreGuardado, "Todos");
+            hiloEnvia.start();
+        }
+        if (btn == emoji7) {
+            String emoji7 = "(ಥ﹏ಥ)";
+            hiloEnvia = new enviar(emoji7, nombreGuardado, "Todos");
+            hiloEnvia.start();
+        }
+        if (btn == emoji8) {
+            String emoji8 = "٩(♡ε♡ )۶";
+            hiloEnvia = new enviar(emoji8, nombreGuardado, "Todos");
+            hiloEnvia.start();
+        }
+        if (btn == emoji9) {
+            String emoji9 = "[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]";
+            hiloEnvia = new enviar(emoji9, nombreGuardado, "Todos");
+            hiloEnvia.start();
+        }
+        if (btn == emoji10) {
+            String emoji10 = " (◉ω◉)";
+            hiloEnvia = new enviar(emoji10, nombreGuardado, "Todos");
             hiloEnvia.start();
         }
     }
