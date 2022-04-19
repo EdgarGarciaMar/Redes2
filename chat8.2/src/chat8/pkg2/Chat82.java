@@ -6,6 +6,8 @@
 package chat8.pkg2;
 
 import info.mensajeDeUsuario;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
@@ -20,9 +22,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-
 
 /**
  *
@@ -35,6 +37,7 @@ public class Chat82 extends JFrame implements ActionListener {
     private JTextPane editor;
     private String nombreGuardado;
     private enviar hiloEnvia;
+    private JScrollPane scrollPane;
 
     public Chat82() {
         super("Chat");
@@ -42,30 +45,34 @@ public class Chat82 extends JFrame implements ActionListener {
         this.setSize(800, 800);
         this.setVisible(true);
         this.setLayout(null); //Layout absoluto
+        this.getContentPane().setBackground(Color.BLUE);
+        scrollPane = new JScrollPane();
+        scrollPane.setBounds(5, 0, 790, 600);
         editor = new JTextPane(); //Incilaizamos el JTexpane
-        editor.setBounds(5, 5, 790, 600);
-        this.add(editor);
+        editor.setPreferredSize(new Dimension(755, 600));
+        editor.setEditable(false);
+        scrollPane.setViewportView(editor);
+        this.add(scrollPane);
         editor.setText("Chat Online con MulticastSocket");
         entrada = new JTextField();
-        entrada.setBounds(5, 650, 670, 50);
+        entrada.setBounds(5, 620, 670, 50);
         this.add(entrada);
         enviar = new JButton("Enviar");
-        enviar.setBounds(675, 650, 115, 50);
+        enviar.setBounds(675, 620, 115, 50);
         enviar.addActionListener(this);
         this.add(enviar);
-        emoji1 = new JButton(":)");
-        emoji1.setBounds(5, 700, 100, 50);
+        emoji1 = new JButton("❤");
+        emoji1.setBounds(5, 670, 50, 40);
         emoji1.addActionListener(this);
         this.add(emoji1);
-        emoji2 = new JButton(":(");
-        emoji2.setBounds(105, 700, 100, 50);
+        emoji2 = new JButton("◕‿◕");
+        emoji2.setBounds(55, 670, 50, 40);
         emoji2.addActionListener(this);
         this.add(emoji2);
-        emoji3 = new JButton("<3");
-        emoji3.setBounds(205, 700, 100, 50);
+        emoji3 = new JButton("༼  ͡° ͜ʖ ͡° ༽");
+        emoji3.setBounds(105, 670, 80, 40);
         emoji3.addActionListener(this);
         this.add(emoji3);
-//        setMensaje("Hola");
         escuchar hiloEscucha = new escuchar();
         hiloEscucha.start();
 
@@ -93,16 +100,24 @@ public class Chat82 extends JFrame implements ActionListener {
             hiloEnvia = new enviar(message, nombreGuardado, "Todos");
             hiloEnvia.start();
             entrada.setText("");
-            
-        }
-        if (btn == emoji1) {
 
         }
+        if (btn == emoji1) {
+//            editor.insertIcon(new ImageIcon("/Users/edgargarcia/Redes2/chat8.2/src/img/corazones.png"));
+            String emojiCorazon = "❤";
+            hiloEnvia = new enviar(emojiCorazon, nombreGuardado, "Todos");
+            hiloEnvia.start();
+        }
         if (btn == emoji2) {
+            String emojiEnamorado = "◕‿◕";
+            hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, "Todos");
+            hiloEnvia.start();
 
         }
         if (btn == emoji3) {
-
+            String emojiLenny = "༼  ͡° ͜ʖ ͡° ༽";
+            hiloEnvia = new enviar(emojiLenny, nombreGuardado, "Todos");
+            hiloEnvia.start();
         }
     }
 
