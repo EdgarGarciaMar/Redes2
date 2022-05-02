@@ -21,6 +21,7 @@ import java.net.MulticastSocket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -35,9 +36,15 @@ public class Chat82 extends JFrame implements ActionListener {
     private JButton enviar, emoji1, emoji2, emoji3, emoji4, emoji5, emoji6, emoji7, emoji8, emoji9, emoji10;
     private JTextField entrada;
     private JTextPane editor;
-    private String nombreGuardado;
+    public String nombreGuardado;
     private enviar hiloEnvia;
     private JScrollPane scrollPane;
+    private JComboBox<String> combo1;
+    private String usuarioOnline;
+    private String[] nombres = new String[100];
+    private int numNombres = 0;
+    private int privado = 0;
+    private String seleccionado = "";
 
     public Chat82() {
         super("Chat");
@@ -57,6 +64,24 @@ public class Chat82 extends JFrame implements ActionListener {
         entrada = new JTextField();
         entrada.setBounds(5, 620, 670, 50);
         this.add(entrada);
+
+        combo1 = new JComboBox<String>();
+        combo1.setBounds(5, 710, 150, 50);
+        this.add(combo1);
+
+        combo1.addItem("Todos");
+        combo1.addActionListener((ActionEvent e) -> {
+
+            seleccionado = (String) combo1.getSelectedItem();
+            if (seleccionado == "Todos") {
+                privado = 0;
+            }
+            if (seleccionado != "Todos") {
+                privado = 1;
+            }
+            //System.out.println(seleccionado);
+            //System.out.println("se ha unido:"+usuarioOnline);
+        });
         enviar = new JButton("Enviar");
         enviar.setBounds(675, 620, 115, 50);
         enviar.addActionListener(this);
@@ -89,7 +114,7 @@ public class Chat82 extends JFrame implements ActionListener {
         emoji7.setBounds(400, 670, 80, 40);
         emoji7.addActionListener(this);
         this.add(emoji7);
-        
+
         emoji8 = new JButton("٩(♡ε♡ )۶");
         emoji8.setBounds(480, 670, 80, 40);
         emoji8.addActionListener(this);
@@ -102,9 +127,17 @@ public class Chat82 extends JFrame implements ActionListener {
         emoji10.setBounds(640, 670, 80, 40);
         emoji10.addActionListener(this);
         this.add(emoji10);
-        
+
         escuchar hiloEscucha = new escuchar();
         hiloEscucha.start();
+
+    }
+
+    public void setMensajePrivado(String nombre, String nuevoMensaje, String para) {
+        String mensajeAnterior;
+        mensajeAnterior = editor.getText();
+        //System.out.println(mensajeAnterior);
+        editor.setText(mensajeAnterior + "\n" + nombre + ":" + nuevoMensaje + " " + "( " + para + ")");
 
     }
 
@@ -126,10 +159,21 @@ public class Chat82 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton btn = (JButton) e.getSource();
         if (btn == enviar) {
-            String message = entrada.getText();
-            hiloEnvia = new enviar(message, nombreGuardado, "Todos");
-            hiloEnvia.start();
-            entrada.setText("");
+            System.out.println(privado);
+            System.out.println(seleccionado);
+            if (privado == 1) {
+                String message = entrada.getText();
+                //setMensajePrivado(nombreGuardado, message, seleccionado);
+                hiloEnvia = new enviar(message, nombreGuardado, "privado");
+                hiloEnvia.start();
+                entrada.setText("");
+            }
+            if (privado == 0) {
+                String message = entrada.getText();
+                hiloEnvia = new enviar(message, nombreGuardado, "Todos");
+                hiloEnvia.start();
+                entrada.setText("");
+            }
 
         }
         if (btn == emoji1) {
@@ -264,7 +308,19 @@ public class Chat82 extends JFrame implements ActionListener {
                     try {
                         mensajeDeUsuario r = (mensajeDeUsuario) is.readObject();
                         //System.out.println(r.getUsuarioOrigen() + " para " + r.getUsuarioDestino() + ":" + r.getMensaje());
+                        //System.out.println("comprobacion name en publico: " + nombreGuardado + "=" + seleccionado);
                         setMensaje(r.getUsuarioOrigen(), r.getMensaje(), r.getUsuarioDestino());
+
+                        usuarioOnline = r.getUsuarioOrigen();
+                        //System.out.println("desde hilo escucha:"+usuarioOnline);
+                        if (numNombres == 100) {
+                            System.out.println("usuarios maximos alcanzados");
+                            System.exit(0);
+                        }
+                        nombres[numNombres] = usuarioOnline;
+                        combo1.addItem(nombres[numNombres]);
+                        System.out.println(nombres[numNombres]);
+                        numNombres++;
 
                         is.close();
                     } catch (ClassNotFoundException ex) {
