@@ -20,13 +20,13 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
+
 
 /**
  *
@@ -36,7 +36,7 @@ public class Chat82 extends JFrame implements ActionListener {
 
     private JButton enviar, emoji1, emoji2, emoji3, emoji4, emoji5, emoji6, emoji7, emoji8, emoji9, emoji10;
     private JTextField entrada;
-    private JTextPane editor;
+    private JEditorPane editor;
     public String nombreGuardado;
     private enviar hiloEnvia;
     private JScrollPane scrollPane;
@@ -48,6 +48,7 @@ public class Chat82 extends JFrame implements ActionListener {
     private String seleccionado = "";
     //private int tipo=0;// 0 es publico ,1 es privado
     //img=0 no img, si es 1 es img
+    String mensajeAnterior = "<b>Chat Online con MulticastSocket</b>", mensajeGuardado;
 
     public Chat82() {
         super("Chat");
@@ -58,12 +59,12 @@ public class Chat82 extends JFrame implements ActionListener {
         this.getContentPane().setBackground(Color.BLUE);
         scrollPane = new JScrollPane();
         scrollPane.setBounds(5, 0, 790, 600);
-        editor = new JTextPane(); //Incilaizamos el JTexpane
+        editor = new JEditorPane("text/html", null); //Incilaizamos el JTexpane
         editor.setPreferredSize(new Dimension(755, 600));
         editor.setEditable(false);
         scrollPane.setViewportView(editor);
         this.add(scrollPane);
-        editor.setText("Chat Online con MulticastSocket");
+        editor.setText("<b>Chat Online con MulticastSocket</b>");
         entrada = new JTextField();
         entrada.setBounds(5, 620, 670, 50);
         this.add(entrada);
@@ -137,10 +138,12 @@ public class Chat82 extends JFrame implements ActionListener {
     }
 
     public void setMensaje(String nombre, String nuevoMensaje, String para) {
-        String mensajeAnterior;
-        mensajeAnterior = editor.getText();
+
+        //mensajeAnterior = editor.getText();
         //System.out.println(mensajeAnterior);
-        editor.setText(mensajeAnterior + "\n" + nombre + ":" + nuevoMensaje + " " + "(" + para + ")");
+        mensajeGuardado = "<b>" + mensajeAnterior + "<br>" + nombre + ":" + nuevoMensaje + " " + "(" + para + ")" + "</b>";
+        editor.setText(mensajeGuardado);
+        mensajeAnterior = mensajeGuardado;
 
     }
 
@@ -161,6 +164,7 @@ public class Chat82 extends JFrame implements ActionListener {
                 hiloEnvia = new enviar(message, nombreGuardado, seleccionado, 1, 0);
                 hiloEnvia.start();
                 entrada.setText("");
+                setMensaje(nombreGuardado,message,seleccionado);
             }
             if (privado == 0) {
                 String message = entrada.getText();
@@ -171,11 +175,13 @@ public class Chat82 extends JFrame implements ActionListener {
 
         }
         if (btn == emoji1) {
-            //editor.insertIcon(new ImageIcon(""));
-             String emojiCorazon = "❤";
-            //String emojiCorazon = "";
+            
+            String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/corazon.png").toString();
+            String emojiCorazon  = "<img src = '" + imgsrc + "' width = 16 height = 16>";
+            
             if (privado == 1) {
                 hiloEnvia = new enviar(emojiCorazon, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emojiCorazon,seleccionado);
 
             } else {
                 hiloEnvia = new enviar(emojiCorazon, nombreGuardado, "Todos", 0, 1);
@@ -406,7 +412,7 @@ public class Chat82 extends JFrame implements ActionListener {
                             }
                             if (r.getImg() == 1) {
                                 System.out.println("img");
-                                
+
                                 setMensaje(r.getUsuarioOrigen(), r.getMensaje(), r.getUsuarioDestino());
                                 //editor.insertIcon(new ImageIcon(r.getMensaje()));
                             }
