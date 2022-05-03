@@ -24,16 +24,18 @@ public class enviar extends Thread {
     byte buffer[] = new byte[6500];
     MulticastSocket enviador;
     String name, mensaje, destino;
-    public enviar(String mensaje, String name, String destino){
+    int tipo;
+    public enviar(String mensaje, String name, String destino, int tipo){
         this.mensaje =mensaje;
         this.name=name;
         this.destino=destino;
+        this.tipo=tipo;
     }
 
     @Override
     public void run() {
         mensajeDeUsuario c;
-        c = new mensajeDeUsuario(mensaje,name, destino);
+        c = new mensajeDeUsuario(mensaje,name, destino,tipo);
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         ObjectOutputStream os;
 
