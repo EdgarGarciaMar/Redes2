@@ -6,13 +6,11 @@ package chat8.pkg2;
 
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author edgargarcia
  */
 public class inicioApp {
-    
 
     public static void main(String[] args) {
         String name = JOptionPane.showInputDialog("Ingresa tu nombre por favor");
@@ -21,7 +19,7 @@ public class inicioApp {
             System.exit(0);
         } else {
             Chat82 c = new Chat82();
-            c.h(name, "Se ha unido","(Todos)");
+            c.h(name, "Se ha unido", "(Todos)");
         }
     }
 

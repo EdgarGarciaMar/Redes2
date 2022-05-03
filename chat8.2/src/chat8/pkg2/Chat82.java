@@ -171,54 +171,110 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji1) {
 //            editor.insertIcon(new ImageIcon("/Users/edgargarcia/Redes2/chat8.2/src/img/corazones.png"));
             String emojiCorazon = "❤";
-            hiloEnvia = new enviar(emojiCorazon, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emojiCorazon, nombreGuardado, seleccionado, 1);
+
+            } else {
+                hiloEnvia = new enviar(emojiCorazon, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
         }
         if (btn == emoji2) {
             String emojiEnamorado = "◕‿◕";
-            hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, seleccionado, 1);
+            } else {
+                hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
 
         }
         if (btn == emoji3) {
             String emojiLenny = "༼  ͡° ͜ʖ ͡° ༽";
-            hiloEnvia = new enviar(emojiLenny, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emojiLenny, nombreGuardado, seleccionado, 1);
+            } else {
+                hiloEnvia = new enviar(emojiLenny, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
         }
         if (btn == emoji4) {
             String emoji4 = "ó_ò";
-            hiloEnvia = new enviar(emoji4, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emoji4, nombreGuardado, seleccionado, 1);
+            } else {
+                hiloEnvia = new enviar(emoji4, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
         }
         if (btn == emoji5) {
             String emoji5 = "(ノಠ益ಠ)";
-            hiloEnvia = new enviar(emoji5, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emoji5, nombreGuardado, seleccionado, 1);
+            } else {
+                hiloEnvia = new enviar(emoji5, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
         }
 
         if (btn == emoji6) {
             String emoji6 = " (▀̿̿Ĺ̯̿▀̿ ̿)";
-            hiloEnvia = new enviar(emoji6, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emoji6, nombreGuardado, seleccionado, 1);
+            } else {
+
+                hiloEnvia = new enviar(emoji6, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
         }
         if (btn == emoji7) {
             String emoji7 = "(ಥ﹏ಥ)";
-            hiloEnvia = new enviar(emoji7, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emoji7, nombreGuardado, seleccionado, 1);
+            } else {
+
+                hiloEnvia = new enviar(emoji7, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
         }
         if (btn == emoji8) {
             String emoji8 = "٩(♡ε♡ )۶";
-            hiloEnvia = new enviar(emoji8, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emoji8, nombreGuardado, seleccionado, 1);
+            } else {
+
+                hiloEnvia = new enviar(emoji8, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
         }
         if (btn == emoji9) {
             String emoji9 = "[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]";
-            hiloEnvia = new enviar(emoji9, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emoji9, nombreGuardado, seleccionado, 1);
+            } else {
+
+                hiloEnvia = new enviar(emoji9, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
         }
         if (btn == emoji10) {
             String emoji10 = " (◉ω◉)";
-            hiloEnvia = new enviar(emoji10, nombreGuardado, "Todos", 0);
+            if (privado == 1) {
+                hiloEnvia = new enviar(emoji10, nombreGuardado, seleccionado, 1);
+            } else {
+
+                hiloEnvia = new enviar(emoji10, nombreGuardado, "Todos", 0);
+
+            }
             hiloEnvia.start();
         }
     }
@@ -281,6 +337,41 @@ public class Chat82 extends JFrame implements ActionListener {
         byte[] buffer2 = new byte[6500];
         MulticastSocket escucha;
 
+        public int busquedaBinariaRecursiva(String[] arreglo, String busqueda, int izquierda, int derecha) {
+            // Si izquierda es mayor que derecha significa que no encontramos nada
+            int resultadoDeLaComparacion = -2;
+            if (izquierda > derecha) {
+                return -1;
+            }
+
+            // Calculamos las mitades...
+            int indiceDelElementoDelMedio = (int) Math.floor((izquierda + derecha) / 2);
+            String elementoDelMedio = arreglo[indiceDelElementoDelMedio];
+
+            // Primero vamos a comparar y luego vamos a ver si el resultado es negativo,
+            // positivo o 0
+            if (elementoDelMedio == null) {
+                resultadoDeLaComparacion = -1;
+            } else {
+                resultadoDeLaComparacion = busqueda.compareTo(elementoDelMedio);
+            }
+
+            // Si el resultado de la comparación es 0, significa que ambos elementos son iguales
+            // y por lo tanto quiere decir que hemos encontrado la búsqueda
+            if (resultadoDeLaComparacion == 0) {
+                return indiceDelElementoDelMedio;
+            }
+
+            // Si no, entonces vemos si está a la izquierda o derecha
+            if (resultadoDeLaComparacion < 0) {
+                derecha = indiceDelElementoDelMedio - 1;
+                return busquedaBinariaRecursiva(arreglo, busqueda, izquierda, derecha);
+            } else {
+                izquierda = indiceDelElementoDelMedio + 1;
+                return busquedaBinariaRecursiva(arreglo, busqueda, izquierda, derecha);
+            }
+        }
+
         @Override
         public void run() {
             while (true) {
@@ -314,15 +405,23 @@ public class Chat82 extends JFrame implements ActionListener {
                         }
 
                         usuarioOnline = r.getUsuarioOrigen();
-                        //System.out.println("desde hilo escucha:"+usuarioOnline);
+
                         if (numNombres == 100) {
                             System.out.println("usuarios maximos alcanzados");
                             System.exit(0);
                         }
-                        nombres[numNombres] = usuarioOnline;
-                        combo1.addItem(nombres[numNombres]);
-                        //System.out.println(nombres[numNombres]);
-                        numNombres++;
+
+                        int resultadoBusqueda = busquedaBinariaRecursiva(nombres, usuarioOnline, 0, 99);
+
+                        if (resultadoBusqueda == -1) {//el usuario no se encontro, por lo que se agrega
+                            System.out.println("el usuario se ha agregado: " + usuarioOnline);
+                            nombres[numNombres] = usuarioOnline;
+                            combo1.addItem(nombres[numNombres]);
+                            //System.out.println(nombres[numNombres]);
+                            numNombres++;
+                        } else {//el usuario ya esta
+                            System.out.println("El usuario " + usuarioOnline + " Ya esta.");
+                        }
 
                         is.close();
                     } catch (ClassNotFoundException ex) {
