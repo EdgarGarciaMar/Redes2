@@ -20,6 +20,7 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -46,6 +47,7 @@ public class Chat82 extends JFrame implements ActionListener {
     private int privado = 0;
     private String seleccionado = "";
     //private int tipo=0;// 0 es publico ,1 es privado
+    //img=0 no img, si es 1 es img
 
     public Chat82() {
         super("Chat");
@@ -137,13 +139,13 @@ public class Chat82 extends JFrame implements ActionListener {
     public void setMensaje(String nombre, String nuevoMensaje, String para) {
         String mensajeAnterior;
         mensajeAnterior = editor.getText();
-        System.out.println(mensajeAnterior);
+        //System.out.println(mensajeAnterior);
         editor.setText(mensajeAnterior + "\n" + nombre + ":" + nuevoMensaje + " " + "(" + para + ")");
 
     }
 
     public void h(String nameI, String mensajeI, String paraI) {
-        hiloEnvia = new enviar(mensajeI, nameI, paraI, 0);
+        hiloEnvia = new enviar(mensajeI, nameI, paraI, 0, 0);
         hiloEnvia.start();
         nombreGuardado = nameI;
     }
@@ -156,26 +158,27 @@ public class Chat82 extends JFrame implements ActionListener {
             System.out.println("tam selc:" + seleccionado.length());
             if (privado == 1) {
                 String message = entrada.getText();
-                hiloEnvia = new enviar(message, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(message, nombreGuardado, seleccionado, 1, 0);
                 hiloEnvia.start();
                 entrada.setText("");
             }
             if (privado == 0) {
                 String message = entrada.getText();
-                hiloEnvia = new enviar(message, nombreGuardado, seleccionado, 0);
+                hiloEnvia = new enviar(message, nombreGuardado, seleccionado, 0, 0);
                 hiloEnvia.start();
                 entrada.setText("");
             }
 
         }
         if (btn == emoji1) {
-//            editor.insertIcon(new ImageIcon("/Users/edgargarcia/Redes2/chat8.2/src/img/corazones.png"));
-            String emojiCorazon = "❤";
+            //editor.insertIcon(new ImageIcon(""));
+             String emojiCorazon = "❤";
+            //String emojiCorazon = "";
             if (privado == 1) {
-                hiloEnvia = new enviar(emojiCorazon, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emojiCorazon, nombreGuardado, seleccionado, 1, 1);
 
             } else {
-                hiloEnvia = new enviar(emojiCorazon, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emojiCorazon, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -183,9 +186,9 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji2) {
             String emojiEnamorado = "◕‿◕";
             if (privado == 1) {
-                hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, seleccionado, 1, 1);
             } else {
-                hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -194,9 +197,9 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji3) {
             String emojiLenny = "༼  ͡° ͜ʖ ͡° ༽";
             if (privado == 1) {
-                hiloEnvia = new enviar(emojiLenny, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emojiLenny, nombreGuardado, seleccionado, 1, 1);
             } else {
-                hiloEnvia = new enviar(emojiLenny, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emojiLenny, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -204,9 +207,9 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji4) {
             String emoji4 = "ó_ò";
             if (privado == 1) {
-                hiloEnvia = new enviar(emoji4, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emoji4, nombreGuardado, seleccionado, 1, 1);
             } else {
-                hiloEnvia = new enviar(emoji4, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emoji4, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -214,9 +217,9 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji5) {
             String emoji5 = "(ノಠ益ಠ)";
             if (privado == 1) {
-                hiloEnvia = new enviar(emoji5, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emoji5, nombreGuardado, seleccionado, 1, 1);
             } else {
-                hiloEnvia = new enviar(emoji5, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emoji5, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -225,10 +228,10 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji6) {
             String emoji6 = " (▀̿̿Ĺ̯̿▀̿ ̿)";
             if (privado == 1) {
-                hiloEnvia = new enviar(emoji6, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emoji6, nombreGuardado, seleccionado, 1, 1);
             } else {
 
-                hiloEnvia = new enviar(emoji6, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emoji6, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -236,10 +239,10 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji7) {
             String emoji7 = "(ಥ﹏ಥ)";
             if (privado == 1) {
-                hiloEnvia = new enviar(emoji7, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emoji7, nombreGuardado, seleccionado, 1, 1);
             } else {
 
-                hiloEnvia = new enviar(emoji7, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emoji7, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -247,10 +250,10 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji8) {
             String emoji8 = "٩(♡ε♡ )۶";
             if (privado == 1) {
-                hiloEnvia = new enviar(emoji8, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emoji8, nombreGuardado, seleccionado, 1, 1);
             } else {
 
-                hiloEnvia = new enviar(emoji8, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emoji8, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -258,10 +261,10 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji9) {
             String emoji9 = "[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]";
             if (privado == 1) {
-                hiloEnvia = new enviar(emoji9, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emoji9, nombreGuardado, seleccionado, 1, 1);
             } else {
 
-                hiloEnvia = new enviar(emoji9, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emoji9, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -269,10 +272,10 @@ public class Chat82 extends JFrame implements ActionListener {
         if (btn == emoji10) {
             String emoji10 = " (◉ω◉)";
             if (privado == 1) {
-                hiloEnvia = new enviar(emoji10, nombreGuardado, seleccionado, 1);
+                hiloEnvia = new enviar(emoji10, nombreGuardado, seleccionado, 1, 1);
             } else {
 
-                hiloEnvia = new enviar(emoji10, nombreGuardado, "Todos", 0);
+                hiloEnvia = new enviar(emoji10, nombreGuardado, "Todos", 0, 1);
 
             }
             hiloEnvia.start();
@@ -293,18 +296,20 @@ public class Chat82 extends JFrame implements ActionListener {
         MulticastSocket enviador;
         String name, mensaje, destino;
         int tipo;
+        int img;
 
-        public enviar(String mensaje, String name, String destino, int tipo) {
+        public enviar(String mensaje, String name, String destino, int tipo, int img) {
             this.mensaje = mensaje;
             this.name = name;
             this.destino = destino;
             this.tipo = tipo;
+            this.img = img;
         }
 
         @Override
         public void run() {
             mensajeDeUsuario c;
-            c = new mensajeDeUsuario(mensaje, name, destino, tipo);
+            c = new mensajeDeUsuario(mensaje, name, destino, tipo, img);
             ByteArrayOutputStream bs = new ByteArrayOutputStream();
             ObjectOutputStream os;
 
@@ -396,12 +401,26 @@ public class Chat82 extends JFrame implements ActionListener {
                         //System.out.println("comprobacion name en publico: " + nombreGuardado + "=" + seleccionado);
                         if (r.getTipo() == 0) {
                             //System.out.println("Tipo publico");
-                            setMensaje(r.getUsuarioOrigen(), r.getMensaje(), r.getUsuarioDestino());
+                            if (r.getImg() == 0) {
+                                setMensaje(r.getUsuarioOrigen(), r.getMensaje(), r.getUsuarioDestino());
+                            }
+                            if (r.getImg() == 1) {
+                                System.out.println("img");
+                                
+                                setMensaje(r.getUsuarioOrigen(), r.getMensaje(), r.getUsuarioDestino());
+                                //editor.insertIcon(new ImageIcon(r.getMensaje()));
+                            }
                         }
 
                         if (nombreGuardado.equals(r.getUsuarioDestino()) && r.getTipo() == 1) {
-
-                            setMensaje(r.getUsuarioOrigen(), r.getMensaje(), r.getUsuarioDestino());
+                            if (r.getImg() == 0) {
+                                setMensaje(r.getUsuarioOrigen(), r.getMensaje(), r.getUsuarioDestino());
+                            }
+                            if (r.getImg() == 1) {
+                                System.out.println("img");
+                                setMensaje(r.getUsuarioOrigen(), r.getMensaje(), r.getUsuarioDestino());
+                                //editor.insertIcon(new ImageIcon(r.getMensaje()));
+                            }
                         }
 
                         usuarioOnline = r.getUsuarioOrigen();

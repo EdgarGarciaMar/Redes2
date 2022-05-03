@@ -35,7 +35,7 @@ public class enviar extends Thread {
     @Override
     public void run() {
         mensajeDeUsuario c;
-        c = new mensajeDeUsuario(mensaje,name, destino,tipo);
+        c = new mensajeDeUsuario(mensaje,name, destino,tipo,0);//img
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         ObjectOutputStream os;
 

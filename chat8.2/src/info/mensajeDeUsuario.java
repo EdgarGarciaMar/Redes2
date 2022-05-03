@@ -17,13 +17,23 @@ public class mensajeDeUsuario implements Serializable {
     private String usuarioOrigen;
     private String usuarioDestino;
     private int tipo;
+    private int img;
 
-    public mensajeDeUsuario (String mensaje, String usuarioOrigen, String usuarioDestino,int tipo) {
+    public mensajeDeUsuario (String mensaje, String usuarioOrigen, String usuarioDestino,int tipo, int img) {
         this.mensaje = mensaje;
         this.usuarioOrigen = usuarioOrigen;
         this.usuarioDestino = usuarioDestino;
         this.tipo=tipo;
+        this.img=img;
 
+    }
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public int getTipo() {
