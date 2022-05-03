@@ -20,6 +20,7 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
@@ -90,44 +91,44 @@ public class Chat82 extends JFrame implements ActionListener {
         enviar.setBounds(675, 620, 115, 50);
         enviar.addActionListener(this);
         this.add(enviar);
-        emoji1 = new JButton("❤");
+        emoji1 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/corazon.png")));//"❤"
         emoji1.setBounds(5, 670, 50, 40);
         emoji1.addActionListener(this);
         this.add(emoji1);
-        emoji2 = new JButton("◕‿◕");
+        emoji2 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/feliz.png")));
         emoji2.setBounds(55, 670, 50, 40);
         emoji2.addActionListener(this);
         this.add(emoji2);
-        emoji3 = new JButton("༼  ͡° ͜ʖ ͡° ༽");
+        emoji3 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/cara-seria.png")));
         emoji3.setBounds(105, 670, 80, 40);
         emoji3.addActionListener(this);
         this.add(emoji3);
-        emoji4 = new JButton("ó_ò");
+        emoji4 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/cara-triste.png")));
         emoji4.setBounds(190, 670, 50, 40);
         emoji4.addActionListener(this);
         this.add(emoji4);
-        emoji5 = new JButton("(ノಠ益ಠ)");
+        emoji5 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/cara-enojada.png")));
         emoji5.setBounds(240, 670, 80, 40);
         emoji5.addActionListener(this);
         this.add(emoji5);
-        emoji6 = new JButton("(▀̿̿Ĺ̯̿▀̿ ̿)");
+        emoji6 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/frio.png")));
         emoji6.setBounds(320, 670, 80, 40);
         emoji6.addActionListener(this);
         this.add(emoji6);
-        emoji7 = new JButton("(ಥ﹏ಥ)");
+        emoji7 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/llorar.png")));
         emoji7.setBounds(400, 670, 80, 40);
         emoji7.addActionListener(this);
         this.add(emoji7);
 
-        emoji8 = new JButton("٩(♡ε♡ )۶");
+        emoji8 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/ojos-del-corazon.png")));
         emoji8.setBounds(480, 670, 80, 40);
         emoji8.addActionListener(this);
         this.add(emoji8);
-        emoji9 = new JButton("[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]");
+        emoji9 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/transferir-dinero.png")));
         emoji9.setBounds(560, 670, 80, 40);
         emoji9.addActionListener(this);
         this.add(emoji9);
-        emoji10 = new JButton(" (◉ω◉)");
+        emoji10 = new JButton(new ImageIcon(Chat82.class.getClassLoader().getSystemResource("./img/triste.png")));
         emoji10.setBounds(640, 670, 80, 40);
         emoji10.addActionListener(this);
         this.add(emoji10);
@@ -190,9 +191,11 @@ public class Chat82 extends JFrame implements ActionListener {
             hiloEnvia.start();
         }
         if (btn == emoji2) {
-            String emojiEnamorado = "◕‿◕";
+            String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/feliz.png").toString();
+            String emojiEnamorado = "<img src = '" + imgsrc + "' width = 16 height = 16>";
             if (privado == 1) {
                 hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emojiEnamorado,seleccionado);
             } else {
                 hiloEnvia = new enviar(emojiEnamorado, nombreGuardado, "Todos", 0, 1);
 
@@ -201,9 +204,11 @@ public class Chat82 extends JFrame implements ActionListener {
 
         }
         if (btn == emoji3) {
-            String emojiLenny = "༼  ͡° ͜ʖ ͡° ༽";
+            String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/cara-seria.png").toString();
+            String emojiLenny ="<img src = '" + imgsrc + "' width = 16 height = 16>";
             if (privado == 1) {
                 hiloEnvia = new enviar(emojiLenny, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emojiLenny,seleccionado);
             } else {
                 hiloEnvia = new enviar(emojiLenny, nombreGuardado, "Todos", 0, 1);
 
@@ -211,9 +216,12 @@ public class Chat82 extends JFrame implements ActionListener {
             hiloEnvia.start();
         }
         if (btn == emoji4) {
-            String emoji4 = "ó_ò";
+             String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/cara-triste.png").toString();
+            String emoji4 ="<img src = '" + imgsrc + "' width = 16 height = 16>";
+            
             if (privado == 1) {
                 hiloEnvia = new enviar(emoji4, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emoji4,seleccionado);
             } else {
                 hiloEnvia = new enviar(emoji4, nombreGuardado, "Todos", 0, 1);
 
@@ -221,9 +229,12 @@ public class Chat82 extends JFrame implements ActionListener {
             hiloEnvia.start();
         }
         if (btn == emoji5) {
-            String emoji5 = "(ノಠ益ಠ)";
+            String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/cara-enojada.png").toString();
+            String emoji5 ="<img src = '" + imgsrc + "' width = 16 height = 16>";
+            
             if (privado == 1) {
                 hiloEnvia = new enviar(emoji5, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emoji5,seleccionado);
             } else {
                 hiloEnvia = new enviar(emoji5, nombreGuardado, "Todos", 0, 1);
 
@@ -232,9 +243,12 @@ public class Chat82 extends JFrame implements ActionListener {
         }
 
         if (btn == emoji6) {
-            String emoji6 = " (▀̿̿Ĺ̯̿▀̿ ̿)";
+            String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/frio.png").toString();
+            String emoji6 ="<img src = '" + imgsrc + "' width = 16 height = 16>";
+            
             if (privado == 1) {
                 hiloEnvia = new enviar(emoji6, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emoji6,seleccionado);
             } else {
 
                 hiloEnvia = new enviar(emoji6, nombreGuardado, "Todos", 0, 1);
@@ -243,9 +257,13 @@ public class Chat82 extends JFrame implements ActionListener {
             hiloEnvia.start();
         }
         if (btn == emoji7) {
-            String emoji7 = "(ಥ﹏ಥ)";
+            String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/llorar.png").toString();
+            String emoji7 ="<img src = '" + imgsrc + "' width = 16 height = 16>";
+            
+            
             if (privado == 1) {
                 hiloEnvia = new enviar(emoji7, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emoji7,seleccionado);
             } else {
 
                 hiloEnvia = new enviar(emoji7, nombreGuardado, "Todos", 0, 1);
@@ -254,9 +272,12 @@ public class Chat82 extends JFrame implements ActionListener {
             hiloEnvia.start();
         }
         if (btn == emoji8) {
-            String emoji8 = "٩(♡ε♡ )۶";
+             String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/ojos-del-corazon.png").toString();
+            String emoji8 ="<img src = '" + imgsrc + "' width = 16 height = 16>";
+            
             if (privado == 1) {
                 hiloEnvia = new enviar(emoji8, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emoji8,seleccionado);
             } else {
 
                 hiloEnvia = new enviar(emoji8, nombreGuardado, "Todos", 0, 1);
@@ -265,9 +286,13 @@ public class Chat82 extends JFrame implements ActionListener {
             hiloEnvia.start();
         }
         if (btn == emoji9) {
-            String emoji9 = "[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]";
+            String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/transferir-dinero.png").toString();
+            String emoji9 ="<img src = '" + imgsrc + "' width = 16 height = 16>";
+            
+            
             if (privado == 1) {
                 hiloEnvia = new enviar(emoji9, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emoji9,seleccionado);
             } else {
 
                 hiloEnvia = new enviar(emoji9, nombreGuardado, "Todos", 0, 1);
@@ -276,9 +301,13 @@ public class Chat82 extends JFrame implements ActionListener {
             hiloEnvia.start();
         }
         if (btn == emoji10) {
-            String emoji10 = " (◉ω◉)";
+            String imgsrc = Chat82.class.getClassLoader().getSystemResource("./img/triste.png").toString();
+            String emoji10 ="<img src = '" + imgsrc + "' width = 16 height = 16>";
+            
+            
             if (privado == 1) {
                 hiloEnvia = new enviar(emoji10, nombreGuardado, seleccionado, 1, 1);
+                setMensaje(nombreGuardado,emoji10,seleccionado);
             } else {
 
                 hiloEnvia = new enviar(emoji10, nombreGuardado, "Todos", 0, 1);
