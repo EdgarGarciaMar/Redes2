@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="https://www.escom.ipn.mx/images/conocenos/escudoESCOM.png"
+      type="image/x-icon"
+    />
+    <style>
+      a {
+        color: #ff0000;
+      }
+      .block{
+        color: #ff0000;
+      }
+      .puerto {
+        color: #7800FF;
+      }
+      .textCode {
+        color: #0000ff;
+      }
+      .codigo {
+        align-items: center;
+        text-align: justify;
+        background-color: white;
+        height: 520px;
+        width: 1100px;
+      }
+    </style>
+    <title>Servidor Web Socket N.B.</title>
+  </head>
+
+  <body
+    background="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4D2fPzxswA8k_5O3ZNZs_BjP8eK94hyHjdiTXIOWBE8YzRm9aqEMTamZ85x4lsrprJ34&usqp=CAU"
+    bgcolor="BA2600"
+  >
+    <font color="White">
+      <center>
+        <h1>Formulario de Registro con Socket N.B.</h1>
+        <img
+          src="https://www.creadores.unam.mx/wp-content/uploads/2019/04/Escuela-Superior-de-Co%CC%81mputo.jpg"
+          width="700"
+          height="400"
+        />
+      </center>
+      <hr />
+      Rellene el siguiente formulario.
+      <br />
+      <center>
+        <h1>Formulario GET</h1>
+        <form action="get" method="GET" name="formGET">
+          Nombre: <br />
+          <input type="text" name="Nombre" /><br />
+
+          Dirección: <br />
+          <input type="text" name="Direccion" /><br />
+
+          Teléfono: <br />
+          <input type="text" name="Telefono" /><br />
+
+          Comentarios:<br />
+          <textarea name="Comentarios" rows="7" cols="40"></textarea>
+          <br />
+
+          <input type="submit" value="Enviar datos" />
+          <input type="reset" value="Borrar datos" />
+        </form>
+
+        <br /><br />
+      </center>
+      <br />
+    </font>
+    <div align="center">
+      <div class="codigo">
+        <h1 align="center">Socket No Bloqueante en Java</h1>
+        <h3 class="puerto">&nbsp;&nbsp;&nbsp;&nbsp;int pto=8000;</h3>
+        <p class="textCode">
+          &nbsp;&nbsp;&nbsp;&nbsp;InetSocketAddress dir = new InetSocketAddress(pto);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;ServerSocketChannel s = ServerSocketChannel.open();<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;<strong class="block">s.configureBlocking(false);</strong><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;s.setOption(StandardSocketOptions.SO_REUSEADDR, true);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;s.socket().bind(dir);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;Selector sel = Selector.open();<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;s.register(sel, SelectionKey.OP_ACCEPT);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;ByteBuffer b = ByteBuffer.allocate(1024);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Esperando una petición...");<br /> <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;while(true){<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sel.select();<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<SelectionKey>it = sel.selectedKeys().iterator();<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(it.hasNext()){<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SelectionKey k = (SelectionKey)it.next();<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it.remove();<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(k.isAcceptable()){//Aceptar nueva conexion<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ch = s.accept();<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Cliente conectado desde "+ch.socket().getInetAddress()+ ", Puerto :"+ ch.socket().getPort());<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="block"> ch.configureBlocking(false);</strong><br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ch.register(sel, SelectionKey.OP_READ);<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+        </p>
+      </div>
+    </div>
+    <div align="center">
+      <h2><a href="/resources.htm">Recursos disponibles</a></h2>
+    </div>
+  </body>
+</html>
