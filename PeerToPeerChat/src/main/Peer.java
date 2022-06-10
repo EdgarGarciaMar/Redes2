@@ -27,8 +27,8 @@ public class Peer {
     }
 
     public void updateListenToPeers(BufferedReader bufferedReader, String username, ServerThread serverThread) throws Exception {
-        System.out.println("enter (separado por espacio) hostname: port#");
-        System.out.println("peer recibe mensajes de (s para saltar):");
+        System.out.println("Ingresa (separado por un espacio) hostname: numero de puerto");
+        System.out.println("Ingresa s para saltar:");
         String input = bufferedReader.readLine();
         String[] inputValues = input.split(" ");
         if(!input.equals("s"))for(int i = 0; i< inputValues.length;i++){
